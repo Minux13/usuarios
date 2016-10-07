@@ -1,9 +1,11 @@
 from django import forms
 
-class RegistroFormulario(forms.Form):
-    nombre = forms.CharField(max_length=100)
-    #email = models.EmailField()
+class FormUser(forms.Form):
+    usuario = forms.CharField(max_length=100)
+    idES = forms.IntegerField()
+    contrasena = forms.CharField(widget=forms.PasswordInput())
 
+    #email = models.EmailField()
 
 """class RegistroFormulario(forms.Form):
     nombre = forms.CharField(max_length=100)
