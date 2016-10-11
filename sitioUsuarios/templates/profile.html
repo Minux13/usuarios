@@ -79,10 +79,9 @@
     </div>
 </script>
 
-<form enctype="multipart/form-data" action="/index/views/" method="POST">{% csrf_token %}
+<form enctype="multipart/form-data" action="" method="POST">{% csrf_token %}
     {{formFile}}
 
-    <input name="uploadedfile" type="file" />
     <input type="submit" value="Subir archivo" />
 </form>
 

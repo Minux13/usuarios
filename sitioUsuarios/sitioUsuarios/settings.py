@@ -150,8 +150,8 @@ STATIC_ROOT = '/static/'
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-MEDIA_ROOT = '/documents/'
-MEDIA_URL = '/public/'
+MEDIA_ROOT = 'public/'
+MEDIA_URL = 'public/'
 
 # Email Settings
 DEFAULT_FROM_EMAIL = 'Alluxi.mx <miriam@alluxi.mx>'

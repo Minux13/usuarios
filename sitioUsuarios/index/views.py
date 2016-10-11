@@ -37,20 +37,27 @@ def profile(request):
 
 def uploadFile(request):
 
-    user = get_object_or_404(File, user=request.user)
+    #user = get_object_or_404(File, user=request.user)
 
     if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES, instance=user)
+        #form = UploadFileForm(request.POST, request.FILES, instance=user)
+        form = UploadFileForm(request.POST or None, request.FILES or None)
+
         if form.is_valid():
-            form.save()
+            pdf = form.cleaned_data["file"]
+            name = form.cleaned_data["name"]
+            #f.save()
+            obj = File.objects.create(pdf=pdf, user=name)
+            #obj2 = File.objects.create(user=name)  #create es un objetos model manager, crea y guarda en la base de datos
             #handle_uploaded_file(request.FILES['file'])
-            return HttpResponseRedirect('uploadfile.html')
+            #return HttpResponseRedirect('uploadfile.html')
+            return HttpResponse('uploadfile.html')
         else:
             pass
     else:
         form = UploadFileForm()
 
-    return render(request, 'uploadfile.html', {'formFile': form})
+    return render(request, 'profile.html', {'formFile': form})
 
 
 def files(request):

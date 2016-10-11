@@ -3,6 +3,10 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from .forms import UploadFileForm
+
 import exifread
 from PIL import Image
 #from aroba.settings import MEDIA_ROOT
@@ -22,14 +26,20 @@ class Userprofile(models.Model):
 
 class File(models.Model):
 
+	#archivo = models.
+
+	#user = models.OneToOneField(User, on_delete=models.CASCADE)
+	pdf = models.FileField(null=True, blank=True, upload_to='pdfs', default='')
+	user = models.CharField(max_length=100)
+
 	class Meta:
         	verbose_name = ("Documento")
         	verbose_name_plural = ("Documentos")
 
 	#proyecto = models.ForeignKey(Proyecto, related_name='proyecto')
 	#image = models.ImageField(null=False, blank=False, upload_to='images/', default='')
-	user = models.OneToOneField(User, null=False, blank=False)
-	pdf = models.FileField(null=False, blank=False, upload_to='pdfs/', default='')
+	#user = models.OneToOneField(User, null=False, blank=False)
+
 	#file_path = ""
 
 	"""@staticmethod

@@ -1,5 +1,5 @@
 from django import forms
-from index.models import File
+#from .models import File
 
 class FormUser(forms.Form):
     usuario = forms.CharField(max_length=100)
@@ -11,10 +11,11 @@ class FormUser(forms.Form):
 class UploadFileForm(forms.Form):
     #title = forms.CharField(max_length=50)
     file = forms.FileField()
+    name = forms.CharField(max_length=100)
 
-    class Meta:
-        model = File
-        fields = ('file')
+    #class Meta:
+     #   model = File
+     #   fields = ('file')
 
 """class RegistroFormulario(forms.Form):
     nombre = forms.CharField(max_length=100)
