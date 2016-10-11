@@ -15,7 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
+#LOGIN_REDIRECT_URL = '/profile/'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
@@ -48,66 +48,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'index',
+    'bootstrapform',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    # ... include the providers you want to enable:
-    'allauth.socialaccount.providers.amazon',
-    'allauth.socialaccount.providers.angellist',
-    'allauth.socialaccount.providers.asana',
-    'allauth.socialaccount.providers.baidu',
-    'allauth.socialaccount.providers.basecamp',
-    'allauth.socialaccount.providers.bitbucket',
-    'allauth.socialaccount.providers.bitbucket_oauth2',
-    'allauth.socialaccount.providers.bitly',
-    'allauth.socialaccount.providers.coinbase',
-    'allauth.socialaccount.providers.digitalocean',
-    'allauth.socialaccount.providers.douban',
-    'allauth.socialaccount.providers.draugiem',
-    'allauth.socialaccount.providers.dropbox',
-    'allauth.socialaccount.providers.dropbox_oauth2',
-    'allauth.socialaccount.providers.edmodo',
-    'allauth.socialaccount.providers.eveonline',
-    'allauth.socialaccount.providers.evernote',
-    'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.feedly',
-    'allauth.socialaccount.providers.flickr',
-    'allauth.socialaccount.providers.foursquare',
-    'allauth.socialaccount.providers.fxa',
-    'allauth.socialaccount.providers.github',
-    'allauth.socialaccount.providers.gitlab',
-    'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.hubic',
-    'allauth.socialaccount.providers.instagram',
-    'allauth.socialaccount.providers.linkedin',
-    'allauth.socialaccount.providers.linkedin_oauth2',
-    'allauth.socialaccount.providers.mailru',
-    'allauth.socialaccount.providers.odnoklassniki',
-    'allauth.socialaccount.providers.openid',
-    'allauth.socialaccount.providers.orcid',
-    'allauth.socialaccount.providers.paypal',
-    'allauth.socialaccount.providers.persona',
-    'allauth.socialaccount.providers.pinterest',
-    'allauth.socialaccount.providers.reddit',
-    'allauth.socialaccount.providers.robinhood',
-    'allauth.socialaccount.providers.shopify',
-    'allauth.socialaccount.providers.slack',
-    'allauth.socialaccount.providers.soundcloud',
-    'allauth.socialaccount.providers.spotify',
-    'allauth.socialaccount.providers.stackexchange',
-    'allauth.socialaccount.providers.stripe',
-    'allauth.socialaccount.providers.tumblr',
-    'allauth.socialaccount.providers.twentythreeandme',
-    'allauth.socialaccount.providers.twitch',
     'allauth.socialaccount.providers.twitter',
-    'allauth.socialaccount.providers.untappd',
-    'allauth.socialaccount.providers.vimeo',
-    'allauth.socialaccount.providers.vk',
-    'allauth.socialaccount.providers.weibo',
-    'allauth.socialaccount.providers.weixin',
-    'allauth.socialaccount.providers.windowslive',
-    'allauth.socialaccount.providers.xing',
+
+    # ... include the providers you want to enable:
 ]
 
 SITE_ID = 1
@@ -136,6 +84,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',
+                'django.template.context_processors.static',
             ],
         },
     },
@@ -196,3 +145,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = '/static/'
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+MEDIA_ROOT = '/documents/'
+MEDIA_URL = '/public/'
+
+# Email Settings
+DEFAULT_FROM_EMAIL = 'Alluxi.mx <miriam@alluxi.mx>'
+EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_HOST_USER = 'miriam@alluxi.mx'
+EMAIL_HOST_PASSWORD = 'Mreyes01'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+LOGIN_REDIRECT_URL = '/index/profile'

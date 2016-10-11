@@ -1,15 +1,7 @@
-<html>
+{% extends "base.html" %}
 
-<head>
-<title>Usuarios</title>
-</head>
+{% block content %}
+<h1>Example Project</h1>
 
-<body>
-<p>Registro</p>
-<form method="post" action="">{% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Registrarse"
-</form>
-
-</body>
-</html>
+<p>Welcome</p>
+{% endblock %}
