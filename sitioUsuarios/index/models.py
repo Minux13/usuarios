@@ -30,11 +30,20 @@ class File(models.Model):
 
 	#user = models.OneToOneField(User, on_delete=models.CASCADE)
 	pdf = models.FileField(null=True, blank=True, upload_to='pdfs', default='')
-	user = models.CharField(max_length=100)
+	user = models.IntegerField()
 
 	class Meta:
         	verbose_name = ("Documento")
         	verbose_name_plural = ("Documentos")
+
+
+
+
+
+
+
+
+
 
 	#proyecto = models.ForeignKey(Proyecto, related_name='proyecto')
 	#image = models.ImageField(null=False, blank=False, upload_to='images/', default='')

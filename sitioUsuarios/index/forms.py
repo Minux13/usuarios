@@ -11,11 +11,11 @@ class FormUser(forms.Form):
 class UploadFileForm(forms.Form):
     #title = forms.CharField(max_length=50)
     file = forms.FileField()
-    name = forms.CharField(max_length=100)
+    #name = forms.CharField(max_length=100)
 
     #class Meta:
-     #   model = File
-     #   fields = ('file')
+        #model = File
+        #fields = ('file')
 
 """class RegistroFormulario(forms.Form):
     nombre = forms.CharField(max_length=100)

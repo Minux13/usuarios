@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>Archivos de {{ user.get_full_name }}:</p>
+
+<table>
+{% for u in files %}
+
+<tr><td><a href="/index/user/{{u.id}}">{{u.pdf}}</a></td></tr>
+
+{% endfor%}
+</table>
+
+{% endblock %}

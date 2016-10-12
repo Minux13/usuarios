@@ -6,22 +6,40 @@ from .models import Userprofile, File
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 
+
+
 #import datetime
 
 def user_profile(request, param_pk):
 
-    user = User.objects.filter(pk=param_pk)
+    user = User.objects.get(pk=param_pk)
 
-    formFiles = UploadFileForm(request.POST or None)
-    context1 = {
-        "formFiles" : formFiles
-    }
+    files = File.objects.filter(user=param_pk)
+
+
+    print "\n\n\n\n\n\n"
+
+    print type(param_pk)
+    pkinteger = int(param_pk)
+    print type(pkinteger)
+
+    print "\n\n\n\n\n\n"
+
+    users = User.objects.all()
+    nameUser = users[1]
+    #nameUser = users.first_name
+    #formFiles = UploadFileForm(request.POST or None)
+
+    print user
+
 
     context = {
-        "user" : user
+        "user" : user,
+        "files": files,
+        "nameUser": nameUser,
     }
 
-    return render(request, 'profile.html', context)
+    return render(request, 'archivosusuario.html', context)
 
 def profile(request):
 
@@ -44,14 +62,21 @@ def uploadFile(request):
         form = UploadFileForm(request.POST or None, request.FILES or None)
 
         if form.is_valid():
-            pdf = form.cleaned_data["file"]
-            name = form.cleaned_data["name"]
-            #f.save()
-            obj = File.objects.create(pdf=pdf, user=name)
+            #Obtengo de la tabla User
+
+            if request.user.is_authenticated:
+                    pdfFile = form.cleaned_data["file"]
+                    userId = request.user.id
+            else:
+                pass
+
+            #userrr = User.objects.get(id=user_id)
+            #  #f.save()
+            obj = File.objects.create(pdf=pdfFile, user=userId)
             #obj2 = File.objects.create(user=name)  #create es un objetos model manager, crea y guarda en la base de datos
             #handle_uploaded_file(request.FILES['file'])
             #return HttpResponseRedirect('uploadfile.html')
-            return HttpResponse('uploadfile.html')
+            return HttpResponse('profile.html')
         else:
             pass
     else:
